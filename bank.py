@@ -49,6 +49,7 @@ class Account:
             return f"You have withdrawn {amount} this is your new balance {self.balance}"
 
 
+    
     def deposits_statement(self):
         for x in self.deposit:
             print(f"you have deposited {x}")
