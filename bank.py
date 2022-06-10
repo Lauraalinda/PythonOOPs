@@ -19,6 +19,9 @@
 # 
 # 
 
+from curses import curs_set
+
+
 class Account:
     account_type="Savings"
     def __init__(self,username,accountnumber):
@@ -35,16 +38,18 @@ class Account:
         else:
             self.balance+=amount
             self.deposit.append(amount)
-            return f"You have deposited {amount} this is your new balance {self.balance} and {self.deposit}"
+            return f"You have deposited {amount} this is your new balance {self.balance}"
     
     
     def withdraw(self,amount):
+        transaction_fee=100
         if amount > self.balance:
             return f"Your balance insufficient balance"
         elif amount<=0:
             return f"Withdraw amount should be more than zero"
         else:
             self.balance-=amount
+            self.balance-=transaction_fee
             self.withdraws.append(amount)
             return f"You have withdrawn {amount} this is your new balance {self.balance}"
 
@@ -52,6 +57,15 @@ class Account:
     def deposits_statement(self):
         for x in self.deposit:
             print(f"you have deposited {x}")
+
+    def withdrawals_statement(self):
+        for x in self.withdraws:
+            print(f"you have withdrawn {x}")
+    
+    def current_balance(self):
+        current_bal=self.balance
+        print(current_bal)
+
 
     
     
