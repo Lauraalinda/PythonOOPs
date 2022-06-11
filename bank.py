@@ -43,9 +43,9 @@ class Account:
     
     def withdraw(self,amount):
         transaction_fee=100
-        if amount > self.balance:
-            return f"Your balance insufficient balance"
-        elif amount<=0:
+        if amount + transaction_fee > self.balance:
+            return f"You have insufficient balance"
+        elif amount + transaction_fee <=0:
             return f"Withdraw amount should be more than zero"
         else:
             self.balance-=amount
