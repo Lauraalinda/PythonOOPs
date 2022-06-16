@@ -64,7 +64,9 @@ class Account:
     
     def current_balance(self):
         current_bal=self.balance
-        print(f"Your current balance is {current_bal}")
+        return f"Your current balance is {current_bal}"
+
+    current_balance()
 
 
     
