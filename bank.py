@@ -28,8 +28,8 @@ class Account:
         self.balance=0
         self.username=username
         self.accountnumber=accountnumber
-        self.deposit=[]
-        self.withdraws=[]
+        self.deposits=[]
+        self.withdrawals=[]
         
     
     def account_deposit(self,amount):
@@ -37,7 +37,7 @@ class Account:
             return f"Deposit amount should be more than zero"
         else:
             self.balance+=amount
-            self.deposit.append(amount)
+            self.deposits.append(amount)
             return f"You have deposited {amount} this is your new balance {self.balance}"
     
     
@@ -45,12 +45,12 @@ class Account:
         transaction_fee=100
         if amount + transaction_fee > self.balance:
             return f"You have insufficient balance"
-        elif amount + transaction_fee <=0:
+        elif amount <=0:
             return f"Withdraw amount should be more than zero"
         else:
             self.balance-=amount
             self.balance-=transaction_fee
-            self.withdraws.append(amount)
+            self.withdrawals.append(amount)
             return f"You have withdrawn {amount} this is your new balance {self.balance}"
 
     
@@ -64,7 +64,7 @@ class Account:
     
     def current_balance(self):
         current_bal=self.balance
-        print(current_bal)
+        print(f"Your current balance is {current_bal}")
 
 
     
