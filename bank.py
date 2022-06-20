@@ -85,6 +85,7 @@ class Account:
         elif amount > self.loan_balance:
             self.balance+=(amount-self.loan_balance)
 
+    
     def transfer(self,receiver,amount):
         self.receiver=receiver
         self.amount=amount
