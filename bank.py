@@ -76,30 +76,62 @@ class Account:
             self.loan_balance+=(amount+(amount*0.03))
             return f"Hello {self.username}.You have borrowed {amount} with an interest of {amount*0.03} so your total loan amount is {self.loan_balance}"
         
+   
+   
     def loan_repayment(self,amount):
-        if amount < 0:
-            return f"Repayment amount must be more than zero"
-        elif amount <=self.loan_balance:
-            self.loan_balance-=amount
-            return f"Your loan balance is {self.loan_balance}"
-        elif amount > self.loan_balance:
-            self.balance+=(amount-self.loan_balance)
-
-    
-    def transfer(self,receiver,amount):
-        self.receiver=receiver
-        self.amount=amount
-        current_balance=self.balance-amount
         if amount<=0:
-            return f"You cannot transfer a non-existant amount"
-        elif amount>self.balance:
-            return f"Your cannot transfer {amount}.Your current balance is {self.balance}"
-        elif amount<self.balance:
-            return f"You have transfered {amount} to {self.receiver} your current balance is {current_balance}"
+            return "Dear customer, You can not pay 0 amount, surely?"
+        if amount>self.loan:
+            remainder=amount-self.loan
+            self.loan=0
+            return f"Your loan balance is {self.loan} { self.deposit(remainder)}"
+        else:
+            self.loan-=amount
+            return f"You have paid a loan of {amount} Ugx and your current loan balance is {self.loan}"
+    
+    def transfer(self,amount,instance_name):
+        if amount<=0:
+            return "invalid amount"
+        elif amount>=self.balance:
+            return "insufficient amount"
+        else:
+            self.balance-=amount
+            instance_name.balance+=amount
+            return f"You have transfered {amount} Ugx to {instance_name} account with the name of {instance_name.account_name}. Your new balance is {self.balance}"
 
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+
+   
+
+   
+
+   
+   
+   
         
        
        
